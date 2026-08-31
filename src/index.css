@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Instrument Sans', system-ui, sans-serif;
+    @apply bg-paper text-ink transition-colors duration-500;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html.dark body {
+    @apply bg-paper-dark;
+  }
+
+  /* Remove tap highlight on mobile */
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply w-[90%] max-w-[1100px] mx-auto;
+  }
+
+  /* Generous vertical rhythm for major sections */
+  .section {
+    @apply py-24 lg:py-32;
+  }
+
+  /* Editorial pill / CTA button */
+  .pill-btn {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-full text-sm font-medium
+      transition duration-300 ease-out cursor-pointer select-none tracking-wide;
+  }
+
+  /* Smaller, outlined variant */
+  .ghost-btn {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-ink-muted dark:text-gray-400
+      border-b border-current pb-px transition-colors duration-200 hover:text-primary dark:hover:text-[#e8906a];
+  }
+
+  /* Section eyebrow label — mono small caps */
+  .eyebrow {
+    @apply font-mono text-[0.68rem] uppercase tracking-[0.28em] text-ink-faint dark:text-gray-500;
+  }
+
+  /* Thin horizontal rule divider */
+  .rule {
+    @apply block h-px w-full;
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  html.dark .rule {
+    background-color: rgba(255, 255, 255, 0.08);
+  }
+
+  /* Project / card hover lift — subtle */
+  .lift {
+    @apply transition-all duration-500;
+  }
+  .lift:hover {
+    transform: translateY(-3px);
+    @apply shadow-lift;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+  }
+
+  .glass-nav {
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+  }
+
+  /* For fine editorial border lines */
+  .border-hairline {
+    border-width: 0.5px;
+  }
+
+  /* Tight editorial leading */
+  .leading-editorial {
+    line-height: 1.05;
+  }
+}
